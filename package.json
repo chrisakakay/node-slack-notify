@@ -1,0 +1,25 @@
+{
+  "name": "node-slack-notify",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava",
+    "test:watch": "ava --watch --verbose"
+  },
+  "author": "Krisztian Nagy <chrisakakay@gmail.com> (http://chrisakakay.github.io/)",
+  "license": "MIT",
+  "homepage": "https://github.com/chrisakakay/node-slack-notify",
+  "bugs": {
+    "url": "https://github.com/chrisakakay/node-slack-notify/issues",
+    "email": "chrisakakay@gmail.com"
+  },
+  "repository": "chrisakakay/node-slack-notify",
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "mock-require": "^3.0.2"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
