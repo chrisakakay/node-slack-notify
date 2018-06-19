@@ -11,7 +11,9 @@ import { notify } from 'node-slack-notify';
 
 notify({
   webhookUrl: 'YOUR_OWN_WEBHOOK_URL',
-  data: {}
+  data: {
+    text: 'Hello'
+  }
 });
 ```
 
