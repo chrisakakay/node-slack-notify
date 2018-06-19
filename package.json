@@ -15,6 +15,11 @@
     "email": "chrisakakay@gmail.com"
   },
   "repository": "chrisakakay/node-slack-notify",
+  "files": [
+    "index.js",
+    "lib/errors.js"
+  ],
+  "keywords": ["slack", "notify", "notification"],
   "devDependencies": {
     "ava": "^0.25.0",
     "mock-require": "^3.0.2"
