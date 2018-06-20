@@ -48,7 +48,7 @@ test('notify function without message', t => {
 
 test('notify function with hook and message', t => {
     return s.notify({
-            webhookUrl: 'https://hooks.slack.com/services/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',
+            webhookUrl: 'https://hooks.slack.com/services/VALIDLOOKINGWEBHOOKTOKEN',
             data: {
                 text: 'Test message'
             }
@@ -60,7 +60,7 @@ test('notify function with hook and message', t => {
 
 test('notify function with hook and customized message', t => {
     return s.notify({
-            webhookUrl: 'https://hooks.slack.com/services/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',
+            webhookUrl: 'https://hooks.slack.com/services/VALIDLOOKINGWEBHOOKTOKEN',
             data: {
                 text: '*bold* `code` _italic_ ~strike~',
                 username: "markdownbot",
