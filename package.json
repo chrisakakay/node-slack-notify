@@ -1,6 +1,6 @@
 {
   "name": "node-slack-notify",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -18,8 +18,7 @@
   },
   "repository": "chrisakakay/node-slack-notify",
   "files": [
-    "index.js",
-    "lib/errors.js"
+    "index.js"
   ],
   "keywords": [
     "slack",
@@ -27,12 +26,9 @@
     "notification"
   ],
   "devDependencies": {
-    "ava": "^0.25.0",
-    "coveralls": "^3.0.1",
-    "mock-require": "^3.0.2",
-    "nyc": "^12.0.2"
-  },
-  "dependencies": {
-    "axios": "^0.18.0"
+    "ava": "2.3.0",
+    "coveralls": "3.0.6",
+    "mock-require": "3.0.3",
+    "nyc": "14.1.1"
   }
 }

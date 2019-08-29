@@ -1,28 +1,39 @@
-const axios = require('axios');
-const errors = require('./lib/errors');
+const https = require('https');
 
 const notify = (args) => {
     return new Promise((resolve, reject) => {
         if (!args) {
-            reject(errors.MISSING_CONFIGURATION); 
+            reject('ERR: Missing configuration');
             return;
         }
         if (!args.webhookUrl) {
-            reject(errors.MISSING_WEBHOOK_URL);
+            reject('ERR: Missing webhookUrl');
             return;
         }
         if (!args.data || !args.data.text) {
-            reject(errors.MISSING_MESSAGE);
+            reject('ERR: Missing message');
             return;
         }
 
-        return axios.post(args.webhookUrl, args.data)
-            .then((response) => {
-                resolve(response);
-            })
-            .catch((e) => {
-                reject(e);
-            });
+        const data = JSON.stringify({ text: args.data.text });
+        const options = {
+            hostname: 'hooks.slack.com',
+            port: 443,
+            path: args.webhookUrl,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Content-Length': data.length
+            }
+        };
+        const req = https.request(options,
+            res => res.statusCode === 200 ?
+                resolve('OK') :
+                reject(`ERR: ${res.statusCode}`)
+        );
+
+        req.write(data);
+        req.end();
     });
 }
 

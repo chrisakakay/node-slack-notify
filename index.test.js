@@ -1,14 +1,18 @@
 import test from 'ava';
 const mock = require('mock-require');
 
-mock('axios', { 
-    post: () => {
-        return new Promise((resolve, reject) => { resolve(); });
+mock('https', {
+    request: (opts, callback) => {
+        return {
+            write: () => {},
+            end: () => {
+                callback({ statusCode: 200 });
+            }
+        }
     }
 });
 
 const s = require('./index');
-const e = require('./lib/errors');
 
 test('notify function is exposed', t => {
     t.true(s.notify !== undefined);
@@ -20,35 +24,35 @@ test('notify function without any parameter', t => {
             t.fail();
         })
         .catch((error) => {
-            t.true(error === e.MISSING_CONFIGURATION);
+            t.true(error === 'ERR: Missing configuration');
         });
 });
 
-test('notify function without any parameter', t => {
+test('notify function without webhook', t => {
     return s.notify({})
         .then(() => {
             t.fail();
         })
         .catch((error) => {
-            t.true(error === e.MISSING_WEBHOOK_URL);
+            t.true(error === 'ERR: Missing webhookUrl');
         });
 });
 
 test('notify function without message', t => {
     return s.notify({
-            webhookUrl: 'https://hooks.slack.com/services/VALIDLOOKINGWEBHOOKTOKEN'
+            webhookUrl: '/services/VALIDLOOKINGWEBHOOKTOKEN'
         })
         .then(() => {
             t.fail();
         })
         .catch((error) => {
-            t.true(error === e.MISSING_MESSAGE);
+            t.true(error === 'ERR: Missing message');
         });
 });
 
 test('notify function with hook and message', t => {
     return s.notify({
-            webhookUrl: 'https://hooks.slack.com/services/VALIDLOOKINGWEBHOOKTOKEN',
+            webhookUrl: '/services/VALIDLOOKINGWEBHOOKTOKEN',
             data: {
                 text: 'Test message'
             }
@@ -60,7 +64,7 @@ test('notify function with hook and message', t => {
 
 test('notify function with hook and customized message', t => {
     return s.notify({
-            webhookUrl: 'https://hooks.slack.com/services/VALIDLOOKINGWEBHOOKTOKEN',
+            webhookUrl: '/services/VALIDLOOKINGWEBHOOKTOKEN',
             data: {
                 text: '*bold* `code` _italic_ ~strike~',
                 username: "markdownbot",
