@@ -6,8 +6,7 @@
   "scripts": {
     "test": "ava",
     "test:watch": "ava --watch --verbose",
-    "coverage": "nyc --reporter=html --reporter=text ava",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc --reporter=html --reporter=text ava"
   },
   "author": "Krisztian Nagy <chrisakakay@gmail.com> (http://chrisakakay.github.io/)",
   "license": "MIT",
@@ -27,7 +26,6 @@
   ],
   "devDependencies": {
     "ava": "2.3.0",
-    "coveralls": "3.0.6",
     "mock-require": "3.0.3",
     "nyc": "14.1.1"
   }

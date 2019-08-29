@@ -1,8 +1,5 @@
 # node-slack-notify
 
-![Badge](https://circleci.com/gh/chrisakakay/node-slack-notify.svg?&style=shield&circle-token=6dd166b15aa0138528147d9d098d3d3ab42a9b8b)
-[![Coverage Status](https://coveralls.io/repos/github/chrisakakay/node-slack-notify/badge.svg?branch=master)](https://coveralls.io/github/chrisakakay/node-slack-notify?branch=master)
-
 Simple slack notification module (yet an other one)
 
 ## Usage
