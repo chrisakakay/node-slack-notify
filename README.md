@@ -11,7 +11,7 @@ Simple slack notification module (yet an other one)
 import { notify } from 'node-slack-notify';
 
 notify({
-  webhookUrl: 'YOUR_OWN_WEBHOOK_URL',
+  webhookUrl: 'YOUR_OWN_WEBHOOK_URL', // starts with "/services/.."
   data: {
     text: 'Hello'
   }
